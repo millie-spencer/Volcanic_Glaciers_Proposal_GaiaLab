@@ -88,23 +88,27 @@
         radial-gradient(ellipse 60% 50% at 70% 40%, rgba(74, 144, 164, 0.12) 0%, transparent 70%),
         radial-gradient(ellipse 40% 60% at 20% 80%, rgba(192, 57, 43, 0.06) 0%, transparent 60%);
       pointer-events: none;
+      z-index: 1;
     }
 
-    /* Topographic line art */
-    .topo {
+    .hero-img {
       position: absolute;
-      right: -5%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 55%;
-      opacity: 0.04;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 52%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.45;
+      mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 40%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 40%, transparent 100%);
       pointer-events: none;
     }
 
     .hero-content {
       max-width: 720px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .hero-eyebrow {
@@ -205,7 +209,7 @@
       margin: 0 auto;
     }
 
-    /* ── FIGURES PLACEHOLDER ── */
+    /* ── FIGURES ── */
     .figures-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -236,6 +240,20 @@
     .figure-icon {
       font-size: 1.8rem;
       opacity: 0.4;
+    }
+
+    /* Centered project image */
+    .project-img-wrap {
+      margin: 2.5rem auto 0;
+      text-align: center;
+    }
+
+    .project-img-wrap img {
+      max-width: 100%;
+      max-height: 480px;
+      border-radius: 4px;
+      object-fit: cover;
+      display: inline-block;
     }
 
     /* ── BIO NARRATIVE ── */
@@ -271,25 +289,10 @@
     .bio-photo-placeholder {
       width: 320px;
       aspect-ratio: 4/3;
-      border: 1px dashed rgba(214, 232, 240, 0.2);
       border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      color: rgba(143, 163, 177, 0.5);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: border-color 0.2s;
+      overflow: hidden;
     }
 
-    .bio-photo-placeholder:hover {
-      border-color: rgba(74, 144, 164, 0.4);
-    }
-
-    /* Real photos — swap placeholders for these once you have images */
     .bio-photo-placeholder img {
       width: 100%;
       height: 100%;
@@ -398,8 +401,7 @@
       nav { padding: 1rem 1.5rem; }
       .hero { padding: 7rem 1.5rem 3rem; }
       section { padding: 4rem 1.5rem; }
-      .bio-card { grid-template-columns: 1fr; }
-      .bio-initial { display: none; }
+      .hero-img { width: 100%; opacity: 0.15; }
     }
   </style>
 </head>
@@ -418,21 +420,12 @@
 
   <!-- HERO -->
   <div class="hero">
-    <!-- Topographic SVG background -->
-    <svg class="topo" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="300" cy="300" rx="280" ry="200" stroke="white" stroke-width="1.5"/>
-      <ellipse cx="300" cy="300" rx="230" ry="160" stroke="white" stroke-width="1.5"/>
-      <ellipse cx="300" cy="300" rx="180" ry="120" stroke="white" stroke-width="1.5"/>
-      <ellipse cx="300" cy="300" rx="130" ry="85" stroke="white" stroke-width="1.5"/>
-      <ellipse cx="300" cy="300" rx="80" ry="50" stroke="white" stroke-width="1.5"/>
-      <ellipse cx="300" cy="300" rx="40" ry="24" stroke="white" stroke-width="1.5"/>
-    </svg>
+    <img class="hero-img" src="images/IMG_4521.jpeg" alt="Volcanic glacier landscape">
 
     <div class="hero-content">
       <p class="hero-eyebrow fade-in">Proposed Postdoctoral Research: Gaia Lab</p>
       <h1 class="hero-title fade-in"><em>Volcanic</em><br>Glaciers</h1>
       <p class="hero-subtitle fade-in">
-        <!-- One-line teaser — update this with your actual subtitle or tagline -->
         Glacier dynamics at the intersection of volcanic activity, climate change, and downstream water security.
       </p>
       <div class="hero-meta fade-in">
@@ -449,18 +442,13 @@
     <p class="section-label">Overview</p>
     <h2>The Project</h2>
 
-    <p>
-      <!-- REPLACE THIS with your actual project abstract or overview -->
-      Volcanic glaciers occupy a uniquely precarious position in the global cryosphere — subject to both climatic forcing and episodic geothermal and eruptive disturbance. Yet their contribution to downstream water availability, hazard generation, and hydrological variability remains poorly constrained, particularly across the Andes where volcanic activity and rapid glacial retreat coincide.
-    </p>
-    <p>
-      <!-- Add a second paragraph if needed, or delete this one -->
-      This project proposes to [describe your main methodological approach here — e.g., integrate remote sensing, numerical modeling, and community-based fieldwork to quantify...]. The work will advance understanding of [key scientific contribution] while directly addressing water security concerns facing Andean communities.
-    </p>
-    <p>
-      <!-- Optional third paragraph — objectives, expected outcomes, etc. -->
-      Primary objectives include: (1) [objective one]; (2) [objective two]; and (3) [objective three].
-    </p>
+    <p>Volcanic glaciers occupy a uniquely precarious position in the global cryosphere — subject to both climatic forcing and episodic geothermal and eruptive disturbance. Yet their contribution to downstream water availability, hazard generation, and hydrological variability remains poorly constrained, particularly across the Andes where volcanic activity and rapid glacial retreat coincide.</p>
+    <p>This project proposes to [describe your main methodological approach here — e.g., integrate remote sensing, numerical modeling, and community-based fieldwork to quantify...]. The work will advance understanding of [key scientific contribution] while directly addressing water security concerns facing Andean communities.</p>
+    <p>Primary objectives include: (1) [objective one]; (2) [objective two]; and (3) [objective three].</p>
+
+    <div class="project-img-wrap">
+      <img src="images/99DA687E-9DD8-4899-AE7E-1457422D9E5E_1_105_c.jpeg" alt="Project figure">
+    </div>
   </section>
 
   <hr class="divider">
@@ -498,24 +486,27 @@
 
       <div class="bio-block">
         <p>Hi! I'm Millie. I am deeply passionate about water in all forms. I was first drawn to water after taking an elective my first year at Georgetown University called "Climate, Water, and People". This course helped me realize that water encapsulates all the issues that are most interesting to me: geography, borders, politics, climate change, human welfare, and more.</p>
-        <p>My interest in the interdisciplinary nature of water led me to study abroad in Santiago, Chile and Melbourne, Australia for about six months each. In Chile, I studied the sociocultural, economic, and environmental impacts of what is known as "the most neoliberal water market in the world". There I developed my senior honor's thesis which documented how water privatization facilitated Chile's rapid economic growth, largely through the proliferation of mining and agroforestry industries, at the expense of individual water security (especially for Chile's most vulnerable and marginalized populations). While in Melbourne, I interned at Aither, a water consulting firm, where I learned about Australia's own water market, and explored similarities and differences between the impacts of privatization in the Maipo and Murray-Darling basins in Chile and Australia, respectively.</p>
       </div>
 
+      <!-- Photo 1 — right, after first paragraph -->
       <div class="bio-photo-wrap bio-photo-right">
         <div class="bio-photo-placeholder">
-          <span class="figure-icon">📷</span>
-          <span>photo-1.jpg</span>
+          <img src="images/IMG_0592.jpeg" alt="Millie Spencer">
         </div>
+      </div>
+
+      <div class="bio-block">
+        <p>My interest in the interdisciplinary nature of water led me to study abroad in Santiago, Chile and Melbourne, Australia for about six months each. In Chile, I studied the sociocultural, economic, and environmental impacts of what is known as "the most neoliberal water market in the world". There I developed my senior honor's thesis which documented how water privatization facilitated Chile's rapid economic growth, largely through the proliferation of mining and agroforestry industries, at the expense of individual water security (especially for Chile's most vulnerable and marginalized populations). While in Melbourne, I interned at Aither, a water consulting firm, where I learned about Australia's own water market, and explored similarities and differences between the impacts of privatization in the Maipo and Murray-Darling basins in Chile and Australia, respectively.</p>
       </div>
 
       <div class="bio-block">
         <p>After undergrad, I worked for a year as an environmental consultant and reinforced my love of field work. However, feeling constrained by formulaic report writing, I felt drawn to the possibilities of open-ended research grad school would provide. With the desire to expand upon my interdisciplinary education, I pursued a masters in Water Science, Policy, and Management at the University of Oxford. While at Oxford, I sought out opportunities to further my hydrology education, and conducted my thesis work on anthropogenic climate attribution and modeling of a glacial lake outburst flood in the Nepali Himalaya. This research experience exposed me to GIS, coding (in R and MATLAB) and numerical modeling, and sparked my interest of mountain hydrology.</p>
       </div>
 
+      <!-- Photo 2 — left, after Oxford paragraph -->
       <div class="bio-photo-wrap bio-photo-left">
         <div class="bio-photo-placeholder">
-          <span class="figure-icon">📷</span>
-          <span>photo-2.jpg</span>
+          <img src="images/IMG_7881.jpeg" alt="Millie Spencer fieldwork">
         </div>
       </div>
 
@@ -524,21 +515,14 @@
         <p>Moreover, I secured independent funding to facilitate my field research and community relationship building with grants from Fulbright, The Consortium of Universities for the Advancement of Hydrologic Science, Inc. (CUAHSI), The NSF Pathways Program, The USGS, and more. I am grateful to have honed these important networking and grant writing skills and hope to continue fine-tuning these abilities through mentorship in my postdoc.</p>
       </div>
 
-      <div class="bio-photo-wrap bio-photo-right">
-        <div class="bio-photo-placeholder">
-          <span class="figure-icon">📷</span>
-          <span>photo-3.jpg</span>
-        </div>
-      </div>
-
       <div class="bio-block">
         <p>While in Chile, my field work exposed me to a very different type of mountain glacier than those I was exposed to in my masters. The glaciers in south-central Chile (36–40°S) are housed on active volcanoes, bringing about unique interactions that are not present with typical mountain glaciers. The influence of volcanic eruption and venting events, ash and debris deposition, rapidly draining sandy soils, and interactions between ground water and magma chambers pose fascinating questions I did not have the opportunity to fully explore during my PhD. My hope for my postdoc is, with the mentorship of the Gaia Lab and the broader MIT community, to define and quantify the myriad of forcings exerted by active volcanoes on their glaciers.</p>
       </div>
 
-      <div class="bio-photo-wrap bio-photo-left">
+      <!-- Photo 3 — right, after volcanic glaciers paragraph -->
+      <div class="bio-photo-wrap bio-photo-right">
         <div class="bio-photo-placeholder">
-          <span class="figure-icon">📷</span>
-          <span>photo-4.jpg</span>
+          <img src="images/a8fb66fa-390b-42d8-9ae3-760252c3fe39.jpg" alt="Volcanic glacier in Chile">
         </div>
       </div>
 
@@ -559,7 +543,6 @@
       <div class="contact-item">
         <p class="contact-label">Email</p>
         <p class="contact-value">
-          <!-- REPLACE with your actual email -->
           <a href="mailto:millie.spencer@colorado.edu">millie.spencer@colorado.edu</a>
         </p>
       </div>
