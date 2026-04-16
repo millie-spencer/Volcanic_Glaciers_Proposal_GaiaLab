@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volcanic Glaciers — Millie Spencer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ice: #d6e8f0;
+      --deep: #0d1f2d;
+      --slate: #2c3e50;
+      --ash: #8fa3b1;
+      --snow: #f4f7f9;
+      --ember: #c0392b;
+      --melt: #4a90a4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--deep);
+      color: var(--snow);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(13, 31, 45, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(214, 232, 240, 0.08);
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--ice);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ash);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ice); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(74, 144, 164, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(192, 57, 43, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Topographic line art */
+    .topo {
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 55%;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--melt);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      color: var(--snow);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--ice);
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      color: var(--ash);
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+      line-height: 1.5;
+    }
+
+    .hero-meta {
+      font-size: 0.82rem;
+      color: var(--ash);
+      letter-spacing: 0.04em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .hero-meta span { display: block; }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--melt);
+      font-weight: 500;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: var(--melt);
+      opacity: 0.5;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--snow);
+      margin-bottom: 2rem;
+    }
+
+    p {
+      color: #b8cdd8;
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+      font-weight: 300;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(214, 232, 240, 0.08);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── FIGURES PLACEHOLDER ── */
+    .figures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .figure-placeholder {
+      aspect-ratio: 4/3;
+      border: 1px dashed rgba(214, 232, 240, 0.2);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: rgba(143, 163, 177, 0.5);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: border-color 0.2s;
+    }
+
+    .figure-placeholder:hover {
+      border-color: rgba(74, 144, 164, 0.4);
+    }
+
+    .figure-icon {
+      font-size: 1.8rem;
+      opacity: 0.4;
+    }
+
+    /* ── BIO NARRATIVE ── */
+    .bio-narrative {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .bio-block {
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+
+    .bio-block p:last-child { margin-bottom: 0; }
+
+    .bio-photo-wrap {
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .bio-photo-right {
+      align-self: flex-end;
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    .bio-photo-left {
+      align-self: flex-start;
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    .bio-photo-placeholder {
+      width: 320px;
+      aspect-ratio: 4/3;
+      border: 1px dashed rgba(214, 232, 240, 0.2);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: rgba(143, 163, 177, 0.5);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: border-color 0.2s;
+    }
+
+    .bio-photo-placeholder:hover {
+      border-color: rgba(74, 144, 164, 0.4);
+    }
+
+    /* Real photos — swap placeholders for these once you have images */
+    .bio-photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    @media (max-width: 640px) {
+      .bio-photo-placeholder { width: 100%; }
+      .bio-photo-right, .bio-photo-left { margin-left: 0; margin-right: 0; }
+    }
+
+    .cv-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.65rem 1.4rem;
+      border: 1px solid rgba(74, 144, 164, 0.5);
+      border-radius: 2px;
+      color: var(--melt);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .cv-link:hover {
+      background: rgba(74, 144, 164, 0.1);
+      border-color: var(--melt);
+      color: var(--ice);
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .contact-item {
+      padding: 1.5rem;
+      border: 1px solid rgba(214, 232, 240, 0.07);
+      border-radius: 4px;
+      background: rgba(44, 62, 80, 0.2);
+      transition: border-color 0.2s;
+    }
+
+    .contact-item:hover { border-color: rgba(74, 144, 164, 0.3); }
+
+    .contact-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ash);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-value {
+      color: var(--ice);
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+
+    .contact-value a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74, 144, 164, 0.4);
+      transition: border-color 0.2s;
+    }
+
+    .contact-value a:hover { border-color: var(--melt); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 3rem;
+      color: rgba(143, 163, 177, 0.4);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      border-top: 1px solid rgba(214, 232, 240, 0.06);
+    }
+
+    /* ── FADE IN ANIMATION ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.25s; }
+    .fade-in:nth-child(3) { animation-delay: 0.4s; }
+    .fade-in:nth-child(4) { animation-delay: 0.55s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      section { padding: 4rem 1.5rem; }
+      .bio-card { grid-template-columns: 1fr; }
+      .bio-initial { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-name" href="#">Millie Spencer</a>
+    <ul class="nav-links">
+      <li><a href="#project">Project</a></li>
+      <li><a href="#figures">Figures</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <!-- Topographic SVG background -->
+    <svg class="topo" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="300" cy="300" rx="280" ry="200" stroke="white" stroke-width="1.5"/>
+      <ellipse cx="300" cy="300" rx="230" ry="160" stroke="white" stroke-width="1.5"/>
+      <ellipse cx="300" cy="300" rx="180" ry="120" stroke="white" stroke-width="1.5"/>
+      <ellipse cx="300" cy="300" rx="130" ry="85" stroke="white" stroke-width="1.5"/>
+      <ellipse cx="300" cy="300" rx="80" ry="50" stroke="white" stroke-width="1.5"/>
+      <ellipse cx="300" cy="300" rx="40" ry="24" stroke="white" stroke-width="1.5"/>
+    </svg>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow fade-in">Proposed Postdoctoral Research: Gaia Lab</p>
+      <h1 class="hero-title fade-in"><em>Volcanic</em><br>Glaciers</h1>
+      <p class="hero-subtitle fade-in">
+        <!-- One-line teaser — update this with your actual subtitle or tagline -->
+        Glacier dynamics at the intersection of volcanic activity, climate change, and downstream water security.
+      </p>
+      <div class="hero-meta fade-in">
+        <span>Millie Spencer (she/her/ella)</span>
+        <span>PhD Candidate · Geography & Hydrology · Institute of Arctic and Alpine Research (INSTAAR) · University of Colorado Boulder</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PROJECT OVERVIEW -->
+  <section id="project">
+    <p class="section-label">Overview</p>
+    <h2>The Project</h2>
+
+    <p>
+      <!-- REPLACE THIS with your actual project abstract or overview -->
+      Volcanic glaciers occupy a uniquely precarious position in the global cryosphere — subject to both climatic forcing and episodic geothermal and eruptive disturbance. Yet their contribution to downstream water availability, hazard generation, and hydrological variability remains poorly constrained, particularly across the Andes where volcanic activity and rapid glacial retreat coincide.
+    </p>
+    <p>
+      <!-- Add a second paragraph if needed, or delete this one -->
+      This project proposes to [describe your main methodological approach here — e.g., integrate remote sensing, numerical modeling, and community-based fieldwork to quantify...]. The work will advance understanding of [key scientific contribution] while directly addressing water security concerns facing Andean communities.
+    </p>
+    <p>
+      <!-- Optional third paragraph — objectives, expected outcomes, etc. -->
+      Primary objectives include: (1) [objective one]; (2) [objective two]; and (3) [objective three].
+    </p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- FIGURES / MAPS -->
+  <section id="figures">
+    <p class="section-label">Figures & Maps</p>
+    <h2>Visualizations</h2>
+    <p>Figures and maps will appear here. To add an image, replace a placeholder below with an <code style="background:rgba(255,255,255,0.07); padding: 0.1em 0.4em; border-radius:3px; font-size:0.9em;">&lt;img&gt;</code> tag pointing to your file.</p>
+
+    <div class="figures-grid">
+      <div class="figure-placeholder">
+        <span class="figure-icon">🗺</span>
+        <span>Study Area Map</span>
+      </div>
+      <div class="figure-placeholder">
+        <span class="figure-icon">📈</span>
+        <span>Figure 2</span>
+      </div>
+      <div class="figure-placeholder">
+        <span class="figure-icon">🧊</span>
+        <span>Figure 3</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2>Millie Spencer</h2>
+
+    <div class="bio-narrative">
+
+      <div class="bio-block">
+        <p>Hi! I'm Millie. I am deeply passionate about water in all forms. I was first drawn to water after taking an elective my first year at Georgetown University called "Climate, Water, and People". This course helped me realize that water encapsulates all the issues that are most interesting to me: geography, borders, politics, climate change, human welfare, and more.</p>
+        <p>My interest in the interdisciplinary nature of water led me to study abroad in Santiago, Chile and Melbourne, Australia for about six months each. In Chile, I studied the sociocultural, economic, and environmental impacts of what is known as "the most neoliberal water market in the world". There I developed my senior honor's thesis which documented how water privatization facilitated Chile's rapid economic growth, largely through the proliferation of mining and agroforestry industries, at the expense of individual water security (especially for Chile's most vulnerable and marginalized populations). While in Melbourne, I interned at Aither, a water consulting firm, where I learned about Australia's own water market, and explored similarities and differences between the impacts of privatization in the Maipo and Murray-Darling basins in Chile and Australia, respectively.</p>
+      </div>
+
+      <div class="bio-photo-wrap bio-photo-right">
+        <div class="bio-photo-placeholder">
+          <span class="figure-icon">📷</span>
+          <span>photo-1.jpg</span>
+        </div>
+      </div>
+
+      <div class="bio-block">
+        <p>After undergrad, I worked for a year as an environmental consultant and reinforced my love of field work. However, feeling constrained by formulaic report writing, I felt drawn to the possibilities of open-ended research grad school would provide. With the desire to expand upon my interdisciplinary education, I pursued a masters in Water Science, Policy, and Management at the University of Oxford. While at Oxford, I pursued opportunities to further my hydrology education, and conducted my thesis work on anthropogenic climate attribution and modeling of a glacial lake outburst flood in the Nepali Himalaya. This research experience exposed me to GIS, coding (in R and MATLAB) and numerical modeling, and sparked my interest of mountain hydrology.</p>
+      </div>
+
+      <div class="bio-photo-wrap bio-photo-left">
+        <div class="bio-photo-placeholder">
+          <span class="figure-icon">📷</span>
+          <span>photo-2.jpg</span>
+        </div>
+      </div>
+
+      <div class="bio-block">
+        <p>Having caught the research bug, I next pursued a PhD in Geography at the University of Colorado, Boulder (CU). At CU, I discovered my love of teaching while working as a teaching assistant (TA) for Climate and Vegetation, Landscapes and Water, Mountain Geography, Snow Hydrology, and The Geography of Skiing and Snowboarding (Yes! A real class if you can believe it.). I also deepened my passion for research while developing my independent dissertation project. Due to the interdisciplinary nature of my research, I had to take the initiative to build a collaborative network of Chilean and U.S. hydrologists and human geographers who could support me in weaving western methods of hydrological modeling, field work, and remote sensing, with geographic methods of semi-structured interviews with Indigenous and local peoples.</p>
+        <p>Moreover, I secured independent funding to facilitate my field research and community relationship building with grants from Fulbright, The Consortium of Universities for the Advancement of Hydrologic Science, Inc. (CUAHSI), The NSF Pathways Program, The USGS, and more. I am grateful to have honed these important networking and grant writing skills and hope to continue fine-tuning these abilities through mentorship in my postdoc.</p>
+      </div>
+
+      <div class="bio-photo-wrap bio-photo-right">
+        <div class="bio-photo-placeholder">
+          <span class="figure-icon">📷</span>
+          <span>photo-3.jpg</span>
+        </div>
+      </div>
+
+      <div class="bio-block">
+        <p>While in Chile, my field work exposed me to a very different type of mountain glacier than those I was exposed to in my masters. The glaciers in south-central Chile (36–40°S) are housed on active volcanoes, bringing about unique interactions that are not present with typical mountain glaciers. The influence of volcanic eruption and venting events, ash and debris deposition, rapidly draining sandy soils, and interactions between ground water and magma chambers pose fascinating questions I did not have the opportunity to fully explore during my PhD. My hope for my postdoc is, with the mentorship of the Gaia Lab and the broader MIT community, to define and quantify the myriad of forcings exerted by active volcanoes on their glaciers.</p>
+      </div>
+
+      <div class="bio-photo-wrap bio-photo-left">
+        <div class="bio-photo-placeholder">
+          <span class="figure-icon">📷</span>
+          <span>photo-4.jpg</span>
+        </div>
+      </div>
+
+      <a class="cv-link" href="cv.pdf" target="_blank">↓ Curriculum Vitae</a>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2>Get in Touch</h2>
+    <p>Feel free to reach out with questions about the proposed research.</p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <p class="contact-label">Email</p>
+        <p class="contact-value">
+          <!-- REPLACE with your actual email -->
+          <a href="mailto:millie.spencer@colorado.edu">millie.spencer@colorado.edu</a>
+        </p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">Institution</p>
+        <p class="contact-value">
+          <a href="https://instaar.colorado.edu" target="_blank">INSTAAR, CU Boulder</a>
+        </p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">GitHub</p>
+        <p class="contact-value">
+          <!-- REPLACE with your GitHub username -->
+          <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a>
+        </p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">Google Scholar</p>
+        <p class="contact-value">
+          <!-- REPLACE with your Scholar link -->
+          <a href="#" target="_blank">Scholar profile</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Millie Spencer · University of Colorado Boulder · <span id="year"></span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
