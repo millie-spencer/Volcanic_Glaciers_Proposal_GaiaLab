@@ -372,8 +372,59 @@
 
     .contact-value a:hover { border-color: var(--melt); }
 
-    /* ── FOOTER ── */
-    footer {
+    /* ── NEWS ── */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1rem;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid rgba(214, 232, 240, 0.07);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .news-item:first-child { border-top: 1px solid rgba(214, 232, 240, 0.07); }
+
+    .news-item:hover .news-title { color: var(--ice); }
+    .news-item:hover .news-arrow { color: var(--melt); transform: translateX(4px); }
+
+    .news-outlet {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--melt);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .news-title {
+      color: #b8cdd8;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      transition: color 0.2s;
+    }
+
+    .news-arrow {
+      color: rgba(143, 163, 177, 0.4);
+      font-size: 1rem;
+      transition: color 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .news-item { grid-template-columns: 1fr auto; }
+      .news-outlet { display: none; }
+    }
+
+    /* ── FOOTER ── */    footer {
       text-align: center;
       padding: 3rem;
       color: rgba(143, 163, 177, 0.4);
@@ -416,6 +467,7 @@
       <li><a href="#project">Project</a></li>
       <li><a href="#figures">Figures</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -535,8 +587,43 @@
 
   <hr class="divider">
 
-  <!-- CONTACT -->
-  <section id="contact">
+  <!-- NEWS AND MEDIA -->
+  <section id="news">
+    <p class="section-label">News & Media</p>
+    <h2>In the Press</h2>
+
+    <div class="news-list">
+      <a class="news-item" href="https://www.nytimes.com/2026/03/24/climate/snow-satellite-rockies-research.html" target="_blank">
+        <span class="news-outlet">The New York Times</span>
+        <span class="news-title">How Do You Measure Snow From Space? First, Climb a Mountain.</span>
+        <span class="news-arrow">→</span>
+      </a>
+      <a class="news-item" href="https://www.denvergazette.com/2025/09/28/the-legacy-and-loss-of-colorados-once-mighty-glaciers/" target="_blank">
+        <span class="news-outlet">Denver Gazette</span>
+        <span class="news-title">The legacy and loss of Colorado's once-mighty glaciers</span>
+        <span class="news-arrow">→</span>
+      </a>
+      <a class="news-item" href="https://laderasur.com/columnas/opinion-el-retroceso-silencioso-del-glaciar-cerro-el-plomo-no-es-solo-un-problema-ambiental-y-de-seguridad-hidrica-sino-tambien-sociocultural/" target="_blank">
+        <span class="news-outlet">Ladera Sur</span>
+        <span class="news-title">OPINIÓN | El retroceso silencioso del glaciar Cerro El Plomo no es solo un problema ambiental y de seguridad hídrica, sino también sociocultural</span>
+        <span class="news-arrow">→</span>
+      </a>
+      <a class="news-item" href="https://www.colorado.edu/today/2024/05/03/5-cu-boulder-students-alumni-receive-2024-25-fulbright-awards" target="_blank">
+        <span class="news-outlet">CU Boulder Today</span>
+        <span class="news-title">5 CU Boulder students, alumni receive 2024–25 Fulbright awards</span>
+        <span class="news-arrow">→</span>
+      </a>
+      <a class="news-item" href="https://www.cuahsi.org/community/news/august-e-newsletter-community-guest-spotlight-with-millie-spencer" target="_blank">
+        <span class="news-outlet">CUAHSI</span>
+        <span class="news-title">August e-Newsletter Community Guest Spotlight with Millie Spencer</span>
+        <span class="news-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CONTACT -->  <section id="contact">
     <p class="section-label">Contact</p>
     <h2>Get in Touch</h2>
     <p>Feel free to reach out with questions about the proposed research.</p>
