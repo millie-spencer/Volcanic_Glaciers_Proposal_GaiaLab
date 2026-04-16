@@ -99,7 +99,7 @@
       width: 52%;
       object-fit: cover;
       object-position: center;
-      opacity: 0.45;
+      opacity: 0.65;
       mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 40%, transparent 100%);
       -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 40%, transparent 100%);
       pointer-events: none;
@@ -271,23 +271,25 @@
     .bio-block p:last-child { margin-bottom: 0; }
 
     .bio-photo-wrap {
-      margin: 1.5rem 0 2.5rem;
+      margin: 1.5rem auto 2.5rem;
+      display: flex;
+      justify-content: center;
     }
 
     .bio-photo-right {
-      align-self: flex-end;
+      align-self: center;
       margin-left: auto;
-      margin-right: 0;
+      margin-right: auto;
     }
 
     .bio-photo-left {
-      align-self: flex-start;
-      margin-left: 0;
+      align-self: center;
+      margin-left: auto;
       margin-right: auto;
     }
 
     .bio-photo-placeholder {
-      width: 320px;
+      width: 480px;
       aspect-ratio: 4/3;
       border-radius: 4px;
       overflow: hidden;
