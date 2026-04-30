@@ -1,0 +1,18 @@
+name: volcanic-glaciers
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - geopandas
+  - matplotlib
+  - cartopy
+  - shapely
+  - pandas
+  - numpy
+  - requests
+  - openpyxl
+  - jupyter
+  - notebook
+  - ipykernel
+  - pip
