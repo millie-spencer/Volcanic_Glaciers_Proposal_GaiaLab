@@ -256,6 +256,26 @@
       display: inline-block;
     }
 
+    /* Full-width figure with caption */
+    .figure-full {
+      margin: 1rem 0 0;
+    }
+
+    .figure-full img {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .figure-caption {
+      font-size: 0.8rem;
+      color: var(--ash);
+      line-height: 1.6;
+      margin-top: 0.75rem;
+      margin-bottom: 0;
+      font-weight: 300;
+    }
+
     /* ── BIO NARRATIVE ── */
     .bio-narrative {
       display: flex;
@@ -496,9 +516,25 @@
     <p class="section-label">Overview</p>
     <h2>The Project</h2>
 
-    <p>Volcanic glaciers occupy a uniquely precarious position in the global cryosphere — subject to both climatic forcing and episodic geothermal and eruptive disturbance. Yet their contribution to downstream water availability, hazard generation, and hydrological variability remains poorly constrained, particularly across the Andes where volcanic activity and rapid glacial retreat coincide.</p>
-    <p>This project proposes to [describe your main methodological approach here — e.g., integrate remote sensing, numerical modeling, and community-based fieldwork to quantify...]. The work will advance understanding of [key scientific contribution] while directly addressing water security concerns facing Andean communities.</p>
-    <p>Primary objectives include: (1) [objective one]; (2) [objective two]; and (3) [objective three].</p>
+    <p>Volcanic glaciers occupy a uniquely precarious position in the global cryosphere — subject to both climatic forcing and episodic geothermal, eruptive, and tectonic disturbance. My doctoral research on the Nevados de Chillán volcanic complex in south-central Chile revealed a 70-year record of sustained glacier loss, while also exposing a fundamental methodological challenge: in volcanic settings, surface elevation change reflects not only glacier mass loss but also tectonic deformation. The 2010 Maule earthquake (M<sub>w</sub> 8.8) caused up to 20 cm of Andean uplift across the study region, and subsequent volcanic unrest produced an additional ~5–25 cm of vertical displacement between 2019 and 2022 — signals that compound the glacier mass balance record in ways that are rarely accounted for in the existing literature.</p>
+    <p>Debris cover from volcanic tephra, ash, and sand deposition further complicates glacier dynamics. While thin debris cover reduces glacier surface albedo and accelerates melt, thick continuous cover insulates ice and slows it — a thickness-dependent relationship that makes the glacier-volcano mass balance inherently complex and site-specific.</p>
+    <p>This project seeks to define and quantify these forcings for Earth's glaciated volcanoes through an integrated remote sensing, subsurface modeling, and field analysis.</p>
+
+    <h3 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.4rem; color:var(--ice); margin: 2.5rem 0 1rem;">Motivation</h3>
+    <p>Approximately 1/5 of Earth's volcanoes house glaciers, with an estimated 850 ± 290 km<sup>3</sup> of ice stored within 5 km of active vents (Edwards et al., 2020). Recent work demonstrates that proximity to a volcano correlates with more negative glacier mass balance globally (Unnsteinsson et al., 2025), and that glaciers near active volcanoes exhibit enhanced flow velocity (Mallalieu et al., 2024). Yet the mechanisms driving these signals remain poorly resolved: is accelerated loss primarily driven by geothermal flux enhancing basal melt, surface albedo reductions from tephra, or eruption-induced melt? And critically — how do we measure these signals when tectonic deformation, magma chamber inflation, groundwater recharge, and glacier surging all produce surface displacement that is nearly indistinguishable in a single satellite observation?</p>
+
+    <h3 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.4rem; color:var(--ice); margin: 2.5rem 0 1rem;">Objective 1 — Multi-sensor tracking of glacier-volcano surface dynamics</h3>
+    <p>The first objective is to build a multi-sensor time series of surface change on glaciated volcanoes aimed at decomposing the overlapping signals of glacier mass loss, volcanic deformation, and tectonic uplift. I will use Interferometric Synthetic Aperture Radar (InSAR) data from Sentinel-1 and the newly launched NISAR satellite to measure high-resolution surface deformation. InSAR is especially well-suited here as SAR coherence is maintained over rocky volcanic terrain where fresh tephra, debris cover, and rugged topography typically compromise optical sensors. By combining InSAR time series with glacier velocity from Sentinel-2 feature tracking, I will characterize these systematically understudied glaciers and their contributions to regional water budgets.</p>
+
+    <h3 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.4rem; color:var(--ice); margin: 2.5rem 0 1rem;">Objective 2 — Machine learning signal decomposition</h3>
+    <p>The second objective is to develop a machine learning framework for decomposing overlapping surface deformation signals. While magma bulging, tectonic uplift, groundwater recharge, and glacier surging all deform the surface, each has a distinct fingerprint when viewed across multiple data streams simultaneously. Magmatic inflation accelerates in the lead-up to eruption and drives elevated seismicity and SO<sub>2</sub> emissions; groundwater recharge is seasonally precipitation-driven; glacier surging follows internal ice dynamics timescales largely decoupled from short-term climate forcing; and tectonic deformation operates at broader regional spatial scales.</p>
+    <p>Building on the work of Festa et al. (2022), I will train and validate a Random Forest classifier on surface displacement patterns, ice velocity, and seismic and geochemical signals from well-characterized volcanic systems (e.g., Iceland, the Pacific Northwest) and apply it globally to assign source probabilities to observed deformation fields. Data from volcano monitoring and well networks, combined with NASA EarthAccess satellite archives and the Smithsonian Global Volcanism Program database, will provide the training data infrastructure.</p>
+
+    <h3 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.4rem; color:var(--ice); margin: 2.5rem 0 1rem;">Objective 3 — Subsurface process constraints and field validation</h3>
+    <p>Pending funding, I propose ground-based validation using seismometers, magnetotellurics (MT), and/or GPS to image subsurface volcanic and hydrothermal structure and constrain deformation source models. MT is particularly well-suited here: by mapping subsurface electrical conductivity at depth, it distinguishes hydrothermal fluids, groundwater, and partial melt in ways that surface observations cannot (Jenkins et al., 2023). Geochemical sampling of springs and fumaroles would complement these structural constraints by tracking the interplay between magmatic and hydrothermal processes across eruptive cycles (Tardani et al., 2025). Together, these measurements would validate satellite observations and provide the process-level understanding needed to model how volcanic activity modulates glacier mass balance over time.</p>
+
+    <h3 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.4rem; color:var(--ice); margin: 2.5rem 0 1rem;">Broader Impacts</h3>
+    <p>This research advances understanding of hydrological systems and landscape evolution on Earth by combining remote sensing, numerical modeling, and fieldwork to constrain how volcanic and tectonic forcing modulates glacier mass balance. Edwards et al. (2020) estimate that 20,000 people live within 5 km of a glaciated volcano globally, and 6.7 million within 30 km, exposing these communities to lahars, outburst floods, and contaminated water supplies. By developing tools to monitor these systems remotely, this work directly supports hazard assessment and early warning. The methods are also transferable beyond Earth — volcanic provinces and geomorphic evidence of past volcanic-ice interaction are widespread on Mars (Edwards et al., 2020; Head &amp; Wilson, 2002), and the remote sensing framework developed here is directly applicable to Mars orbital datasets.</p>
 
     <div class="project-img-wrap">
       <img src="images/99DA687E-9DD8-4899-AE7E-1457422D9E5E_1_105_c.jpeg" alt="Project figure">
@@ -513,7 +549,17 @@
     <h2>Visualizations</h2>
     <p>Figures and maps will appear here. To add an image, replace a placeholder below with an <code style="background:rgba(255,255,255,0.07); padding: 0.1em 0.4em; border-radius:3px; font-size:0.9em;">&lt;img&gt;</code> tag pointing to your file.</p>
 
-    <div class="figures-grid">
+    <div class="figure-full">
+      <img src="images/41467_2025_63332_Fig5_HTML.jpeg" alt="Global distribution of glacierized volcanoes from Unnsteinsson et al. 2025">
+      <p class="figure-caption">Holocene volcanoes (red dots) from the Global Volcanism Program and glaciers (blue polygons) from the Randolph Glacier Inventory. Glacierized volcanoes (triangles) are volcanoes with glaciers within 5 km (red), 10 km (dark orange), 20 km (light orange), and 40 km (yellow). <em>Figure 5 from Unnsteinsson et al. (2025), Nature Communications, CC BY 4.0.</em></p>
+    </div>
+
+    <div class="figure-full" style="margin-top:3rem;">
+      <img src="images/1-s2.0-S0012825217305780-gr2_lrg.jpg" alt="Schematic of volcanic impacts on glacier behaviour from Barr et al. 2018">
+      <p class="figure-caption">Schematic illustrations of the impacts that different forms of volcanic activity can have on glacier behaviour, including enhanced subglacial heat flow, subglacial dome growth, pyroclastic density currents, lava flows, and supraglacial tephra deposition. <em>Figure 2 from Barr et al. (2018), Earth-Science Reviews.</em></p>
+    </div>
+
+    <div class="figures-grid" style="margin-top:2rem;">
       <div class="figure-placeholder">
         <span class="figure-icon">🗺</span>
         <span>Study Area Map</span>
@@ -522,12 +568,7 @@
         <span class="figure-icon">📈</span>
         <span>Figure 2</span>
       </div>
-      <div class="figure-placeholder">
-        <span class="figure-icon">🧊</span>
-        <span>Figure 3</span>
-      </div>
-    </div>
-  </section>
+    </div>  </section>
 
   <hr class="divider">
 
